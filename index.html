@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ALANA | Desarrollo en Preventa</title>
+
+<meta property="og:title" content="ALANA | Desarrollo en Preventa con Amenidades Tipo Resort">
+<meta property="og:description" content="Departamentos en Nuevo Nayarit con gran potencial de inversión">
+<meta property="og:image" content="principal.jpg">
+<meta property="og:type" content="website">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Montserrat',sans-serif;
+color:#fff;
+text-align:center;
+background:
+linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.86)),
+url('principal.jpg');
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+overflow-x:hidden;
+}
+
+header{
+padding:70px 20px;
+border:none;
+background:none;
+}
+
+.logo{
+width:190px;
+max-width:80%;
+margin-bottom:25px;
+}
+
+.music-btn{
+background:#d4af37;
+color:#000;
+border:none;
+padding:13px 28px;
+border-radius:30px;
+font-weight:700;
+cursor:pointer;
+margin:20px auto;
+display:inline-block;
+}
+
+h1{
+font-family:'Playfair Display',serif;
+font-size:46px;
+color:#d4af37;
+
+text-shadow:
+0 4px 15px rgba(0,0,0,.8),
+0 0 35px rgba(0,0,0,.6);
+}
+
+.sub,
+.contacto-header{
+text-shadow:
+0 2px 10px rgba(0,0,0,.9);
+}
+
+.contacto-header{
+margin-top:18px;
+font-size:15px;
+color:#ddd;
+line-height:1.8;
+}
+
+.section{
+padding:75px 20px;
+max-width:1200px;
+margin:auto;
+}
+
+.section h2{
+color:#d4af37;
+font-family:'Playfair Display',serif;
+font-size:38px;
+margin-bottom:35px;
+}
+
+.hero img{
+width:100%;
+max-width:1050px;
+height:auto;
+border-radius:22px;
+box-shadow:0 25px 70px rgba(0,0,0,.55);
+border:1px solid rgba(212,175,55,.25);
+}
+
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:24px;
+}
+
+.card{
+border:1px solid rgba(212,175,55,.28);
+padding:28px;
+border-radius:22px;
+background:rgba(10,10,10,.72);
+backdrop-filter:blur(8px);
+box-shadow:0 18px 45px rgba(0,0,0,.35);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+border-color:rgba(212,175,55,.65);
+}
+
+.card h3{
+color:#d4af37;
+font-size:21px;
+margin-bottom:12px;
+}
+
+.card p{
+color:#eee;
+line-height:1.7;
+font-size:16px;
+}
+
+.gallery,
+.info-images{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:24px;
+align-items:stretch;
+}
+
+.gallery img,
+.info-images img,
+.plan-img{
+width:100%;
+height:280px;
+object-fit:cover;
+border-radius:20px;
+border:1px solid rgba(212,175,55,.28);
+box-shadow:0 18px 45px rgba(0,0,0,.45);
+cursor:pointer;
+transition:.3s;
+background:#000;
+}
+
+.info-images img{
+height:330px;
+object-fit:cover;
+}
+
+.gallery img:hover,
+.info-images img:hover,
+.plan-img:hover{
+transform:scale(1.025);
+border-color:rgba(212,175,55,.75);
+}
+
+.buttons{
+margin-top:35px;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:22px;
+flex-wrap:wrap;
+}
+
+.btn{
+background:#d4af37;
+color:#000;
+padding:16px 32px;
+border-radius:40px;
+text-decoration:none;
+font-weight:800;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+min-width:250px;
+transition:.3s;
+box-shadow:0 12px 35px rgba(212,175,55,.20);
+}
+
+.btn:hover{
+background:#fff;
+transform:translateY(-4px);
+}
+
+footer{
+padding:50px 20px;
+border-top:1px solid rgba(212,175,55,.45);
+margin-top:70px;
+color:#ddd;
+background:rgba(0,0,0,.72);
+line-height:1.8;
+}
+
+/* MODAL */
+
+.modal{
+display:none;
+position:fixed;
+z-index:9999;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.92);
+align-items:center;
+justify-content:center;
+padding:25px;
+}
+
+.modal img{
+max-width:95%;
+max-height:90%;
+border-radius:18px;
+box-shadow:0 25px 80px rgba(0,0,0,.8);
+}
+
+.cerrar{
+position:absolute;
+top:20px;
+right:35px;
+font-size:45px;
+color:#fff;
+cursor:pointer;
+font-weight:700;
+}
+
+@media(max-width:768px){
+
+h1{
+font-size:36px;
+}
+
+.section{
+padding:55px 18px;
+}
+
+.section h2{
+font-size:31px;
+}
+
+.gallery img,
+.info-images img,
+.plan-img{
+height:240px;
+}
+
+.buttons{
+flex-direction:column;
+}
+
+.btn{
+width:100%;
+max-width:330px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<img src="logo.png" class="logo" alt="Logo">
+
+<br>
+
+<button class="music-btn" onclick="activarMusica()">
+🎵 Activar Música
+</button>
+
+<h1>Desarrollo en Preventa</h1>
+
+<p class="sub">Torrez & Maldonado Real Estate</p>
+
+<div class="contacto-header">
+RODRIGO MALDONADO | GESTOR<br>
+📧 ventas.rodrigomaldonado@gmail.com<br>
+📱 +52 322 134 0289
+</div>
+
+</header>
+
+<section class="section hero">
+<img src="principal.jpg" alt="ALANA Desarrollo en Preventa" onclick="abrirModal(this.src)">
+</section>
+
+<section class="section">
+
+<h2>Características del Departamento</h2>
+
+<div class="features">
+
+<div class="card">
+<h3>Departamentos</h3>
+<p>Opciones de 1 a 3 recámaras, sala, comedor, cocina con barra y alacena, terraza y distribución funcional.</p>
+</div>
+
+<div class="card">
+<h3>Baños</h3>
+<p>Modelos con 1 a 2 baños, según tipología disponible.</p>
+</div>
+
+<div class="card">
+<h3>Torres</h3>
+<p>Torres con elevador de carga, comercio, pozo de agua y planta de tratamiento.</p>
+</div>
+
+<div class="card">
+<h3>Estacionamiento</h3>
+<p>1 cajón de estacionamiento y seguridad 24/7 los 365 días del año.</p>
+</div>
+
+<div class="card">
+<h3>Superficies</h3>
+<p>Departamentos desde 56 m², 62 m², 73 m², 79.56 m², 84 m² y 114.24 m².</p>
+</div>
+
+<div class="card">
+<h3>Amenidades Tipo Resort</h3>
+<p>Mini golf, parque para perros, alberca infantil, family pool, coworking, lectura, hamacas, casa club, asadores, juegos infantiles, lobby, palapa bar, ciclopuerto, carga eléctrica, gimnasio y cancha de pádel.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>Amenidades del Desarrollo</h2>
+
+<div class="info-images">
+
+<img src="info1.jpg" onclick="abrirModal(this.src)" alt="Amenidad ALANA 1">
+<img src="info2.jpg" onclick="abrirModal(this.src)" alt="Amenidad ALANA 2">
+<img src="info3.jpg" onclick="abrirModal(this.src)" alt="Amenidad ALANA 3">
+<img src="info4.jpg" onclick="abrirModal(this.src)" alt="Amenidad ALANA 4">
+<img src="info5.jpg" onclick="abrirModal(this.src)" alt="Amenidad ALANA 5">
+<img src="info6.jpg" onclick="abrirModal(this.src)" alt="Amenidad ALANA 6">
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>Galería</h2>
+
+<div class="gallery">
+
+<img src="foto1.jpg" onclick="abrirModal(this.src)" alt="Galería ALANA 1">
+<img src="foto2.jpg" onclick="abrirModal(this.src)" alt="Galería ALANA 2">
+<img src="foto3.jpg" onclick="abrirModal(this.src)" alt="Galería ALANA 3">
+<img src="foto4.jpg" onclick="abrirModal(this.src)" alt="Galería ALANA 4">
+<img src="foto5.jpg" onclick="abrirModal(this.src)" alt="Galería ALANA 5">
+<img src="foto6.jpg" onclick="abrirModal(this.src)" alt="Galería ALANA 6">
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>Planos de los Departamentos</h2>
+
+<div class="features">
+
+<div class="card">
+<h3>Modelo A</h3>
+<img src="plano1.jpg" class="plan-img" onclick="abrirModal(this.src)" alt="Plano Modelo A">
+<p>1 recámara | 62 m²</p>
+</div>
+
+<div class="card">
+<h3>Modelo B</h3>
+<img src="plano2.jpg" class="plan-img" onclick="abrirModal(this.src)" alt="Plano Modelo B">
+<p>2 recámaras | 79.56 m²</p>
+</div>
+
+<div class="card">
+<h3>Modelo C</h3>
+<img src="plano3.jpg" class="plan-img" onclick="abrirModal(this.src)" alt="Plano Modelo C">
+<p>3 recámaras | 114.24 m²</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>Avance del Proyecto</h2>
+
+<div class="features">
+
+<div class="card">
+<h3>Avance de obra</h3>
+<p>35%</p>
+</div>
+
+<div class="card">
+<h3>Inicio de obra</h3>
+<p>Enero 2025</p>
+</div>
+
+<div class="card">
+<h3>Entrega estimada</h3>
+<p>Diciembre 2026</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>Más Información</h2>
+
+<div class="buttons">
+
+<a class="btn" href="./ficha-tecnica.pdf" target="_blank">
+📄 Ver Brochure
+</a>
+
+<a class="btn" href="informacion-zona.pdf" target="_blank">
+🌎 Información de la Zona
+</a>
+
+<a class="btn" href="https://maps.app.goo.gl/g61831pCJf1XeDTa8" target="_blank">
+📍 Ver Ubicación
+</a>
+
+<a class="btn" href="https://wa.me/523221340289?text=Hola%20me%20interesa%20recibir%20información%20del%20desarrollo%20en%20preventa" target="_blank">
+💬 Contactar por WhatsApp
+</a>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+RODRIGO MALDONADO | GESTOR<br>
+Gestión y localización de propiedades comerciales y viviendas<br>
+ventas.rodrigomaldonado@gmail.com<br>
+WhatsApp: +52 322 134 0289
+</p>
+
+</footer>
+
+<div class="modal" id="modal">
+<span class="cerrar" onclick="cerrarModal()">×</span>
+<img id="modalImg" src="">
+</div>
+
+<audio id="musica" loop>
+<source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+function activarMusica(){
+const audio = document.getElementById("musica");
+audio.play();
+}
+
+function abrirModal(src){
+document.getElementById("modal").style.display = "flex";
+document.getElementById("modalImg").src = src;
+}
+
+function cerrarModal(){
+document.getElementById("modal").style.display = "none";
+document.getElementById("modalImg").src = "";
+}
+
+document.getElementById("modal").addEventListener("click", function(e){
+if(e.target.id === "modal"){
+cerrarModal();
+}
+});
+
+</script>
+
+</body>
+</html>
