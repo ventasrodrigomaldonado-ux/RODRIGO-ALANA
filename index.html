@@ -289,8 +289,8 @@ max-width:330px;
 
 <br>
 
-<button class="music-btn" onclick="activarMusica()">
-🎵 Activar Música
+<button class="music-btn" id="musicButton" onclick="activarMusica()">
+    🎵 Activar Música
 </button>
 
 <h1>Desarrollo en Preventa</h1>
@@ -489,8 +489,27 @@ WhatsApp: +52 322 134 0289
 <script>
 
 function activarMusica(){
-const audio = document.getElementById("musica");
-audio.play();
+
+    const audio = document.getElementById("musica");
+    const button = document.getElementById("musicButton");
+
+    if (audio.paused) {
+
+        audio.play()
+        .then(() => {
+            button.innerHTML = "⏸ Pausar Música";
+        })
+        .catch(error => {
+            console.error("No se pudo reproducir la música:", error);
+            alert("No se pudo reproducir la música. Verifica que el archivo musica.mp3 exista y esté en la carpeta correcta.");
+        });
+
+    } else {
+
+        audio.pause();
+        button.innerHTML = "🎵 Activar Música";
+
+    }
 }
 
 function abrirModal(src){
